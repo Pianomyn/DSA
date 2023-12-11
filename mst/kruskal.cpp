@@ -80,14 +80,22 @@ public:
 };
 
 int main() {
-  vector<vector<vector<int>>> allEdges{{{1, 2, 1}, {2, 3, 4}, {3, 1, 2}},
-                                       {{1, 2, 3},
-                                        {2, 3, 2},
-                                        {3, 4, 3},
-                                        {4, 5, 1},
-                                        {5, 1, 5},
-                                        {2, 4, 1},
-                                        {2, 5, 2}}};
+  vector<vector<vector<int>>> allEdges{
+    {
+      {1, 2, 1},
+      {2, 3, 4},
+      {3, 1, 2}
+    },
+    {
+      {1, 2, 3},
+      {2, 3, 2},
+      {3, 4, 3},
+      {4, 5, 1},
+      {5, 1, 5},
+      {2, 4, 1},
+      {2, 5, 2}
+    }
+  };
   vector<vector<int>> allVertices{{1, 2, 3}, {1, 2, 3, 4, 5}};
   Solution s;
   for (int i = 0; i < allEdges.size(); i++) {
