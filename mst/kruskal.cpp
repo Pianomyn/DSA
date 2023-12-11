@@ -80,11 +80,22 @@ public:
 };
 
 int main() {
-  vector<vector<int>> edges{{1,2,1}, {2,3,100}, {3,1,2}};
-  vector<int> vertices{1, 2, 3};
+  vector<vector<vector<int>>> allEdges{{{1, 2, 1}, {2, 3, 4}, {3, 1, 2}},
+                                       {{1, 2, 3},
+                                        {2, 3, 2},
+                                        {3, 4, 3},
+                                        {4, 5, 1},
+                                        {5, 1, 5},
+                                        {2, 4, 1},
+                                        {2, 5, 2}}};
+  vector<vector<int>> allVertices{{1, 2, 3}, {1, 2, 3, 4, 5}};
   Solution s;
-  for (vector<int> &edge : s.kruskalsAlgorithm(edges, vertices)) {
-    cout << edge[0] << " " << edge[1] << " " << edge[2] << endl;
+  for (int i = 0; i < allEdges.size(); i++) {
+    cout << "Test Case #" << i + 1 << endl;
+    for (vector<int> &edge : s.kruskalsAlgorithm(allEdges[i], allVertices[i])) {
+      cout << edge[0] << " " << edge[1] << " " << edge[2] << endl;
+    }
+    cout << endl;
   }
   return 0;
 }
