@@ -47,6 +47,7 @@ public:
                                         vector<int> &vertices) {
     /*
      * Returns the edges that comprise the MST.
+     * Assumes the graph is undirected
      *
      * :edges: edges.size()ach edge is size 3. [Source, Target, Weight].
      * :vertices: Assumes indexing starts at 1.
