@@ -17,7 +17,7 @@ private:
   };
 
 public:
-  int swimInWater(std::vector<std::vector<int>> &grid) {
+  int djikstrasAlgorithm(std::vector<std::vector<int>> &grid) {
     int n = grid.size();
 
     std::vector<std::vector<int>> dist(n, std::vector<int>(n, INT_MAX));
