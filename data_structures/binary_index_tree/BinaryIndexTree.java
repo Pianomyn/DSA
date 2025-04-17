@@ -19,6 +19,7 @@ class BinaryIndexTree {
 
   public void update(int i, int value) {
     int delta = value - this.arr[i];
+    this.arr[i] = value;
     while (i <= this.size) {
       this.tree[i] += delta;
       int lsb = this.getLeastSignificantBit(i);
