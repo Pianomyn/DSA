@@ -6,17 +6,17 @@ public class UnionFind {
         reps = new int[size];
         rank = new int[size];
 
-        for (int i = 0; i < reps.length; i++) {
-            reps[i] = i;
+        for (int u = 0; u < reps.length; u++) {
+            reps[u] = u;
         }
     }
  
-    public int find(int i) {
-        while (reps[i] != i) {
-            reps[i] = reps[reps[i]];  // Path Compression
-            i = reps[i];
+    public int find(int u) {
+        while (reps[u] != u) {
+            reps[u] = reps[reps[u]];  // Path Compression
+            u = reps[u];
         }
-        return reps[i];
+        return reps[u];
     }
  
     public void union(int u, int v) {
