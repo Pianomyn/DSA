@@ -20,7 +20,7 @@ class SegmentTree implements RangeQuery {
         delta;  //  For lazy propagation
 
   /* If n is a power of 2, only need 2n - 1 nodes (n leaves, n-1 internal).
-   * For safety, pad to the next power of 2 to accommodate all nodes.
+   * For safety, pad to the next power of 2 to accommodate all nodes if not power of 2.
    */
   public SegmentTree(int n) {
     this.n = n;
@@ -85,14 +85,17 @@ class SegmentTree implements RangeQuery {
 
   @Override
   public int minimum(int i, int start, int end) {
+    // Uncovered
     if(end < this.rangeLow[i] || this.rangeHigh[i] < start) {
       return Integer.MAX_VALUE;
     }
 
+    // Fully covered
     if(start <= this.rangeLow[i] && this.rangeHigh[i] <= end) {
       return this.min[i] + delta[i];
     }
 
+    // Partially covered
     propagate(i);
 
     int minLeft = minimum(2 * i, start, end);
