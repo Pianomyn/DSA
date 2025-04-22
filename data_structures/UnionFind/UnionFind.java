@@ -19,21 +19,21 @@ public class UnionFind {
         return reps[i];
     }
  
-    public void union(int i, int j) {
-        int p1 = find(i);
-        int p2 = find(j);
-        if (p1 == p2) {
+    public void union(int u, int v) {
+        int repU = find(u);
+        int repV = find(v);
+        if (repU == repV) {
             return;
         }
  
         // Union by rank
-        if (rank[p1] < rank[p2]) {
-            reps[p1] = p2;
-        } else if (rank[p1] > rank[p2]) {
-            reps[p2] = p1;
+        if (rank[repU] < rank[repV]) {
+            reps[repU] = repV;
+        } else if (rank[repU] > rank[repV]) {
+            reps[repV] = repU;
         } else {
-            reps[p1] = p2;
-            rank[p2]++;
+            reps[repU] = repV;
+            rank[repV]++;
         }
     }
 }
