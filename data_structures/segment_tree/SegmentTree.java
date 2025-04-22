@@ -4,13 +4,14 @@ interface RangeQuery {
   int minimum(int i, int start, int end);
 }
 interface RangeUpdate {
+  void rangeUpdateMin(int start, int end, int change);
 }
 interface PointQuery {
 }
 interface PointUpdate {
 }
 
-class SegmentTree implements RangeQuery {
+class SegmentTree implements RangeQuery, RangeUpdate {
   int n;
   int[] rangeLow,  // For a point, the low end of the range it's responsible for.
         rangeHigh, // For a point, the high end of the range it's responsible for.
@@ -76,7 +77,9 @@ class SegmentTree implements RangeQuery {
     );
   }
 
-  void rangeUpdateMin(int i, int start, int end, int change) {
+  @Override
+  public void rangeUpdateMin(int start, int end, int change) {
+    int i = 1;  // Root
     // Down
     rangeUpdate(i, start, end, change);
     // Up
