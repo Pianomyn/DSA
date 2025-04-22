@@ -1,5 +1,5 @@
 /*
- * Useful where we need division under modulo. Eg with combinatorics.
+ * Useful where we need division under modulo (Div doesn't work under mod). Eg with combinatorics.
  * (a/b) % m => need to do (a*b^-1) % m.
  *              AKA use mod inverse of b.
  *
