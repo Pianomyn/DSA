@@ -31,7 +31,7 @@ class SegmentTree implements RangeQuery, RangeUpdate {
     initRange(1, 0, n-1);  // 1-indexing
   }
 
-  void initRange(int i, intlow, int high) {
+  void initRange(int i, int low, int high) {
     this.rangeLow[i] = low;
     this.rangeHigh[i] = high;
 
