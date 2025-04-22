@@ -27,7 +27,7 @@ class ModularInverse {
     return binaryExponentiation(x, mod - 2, mod);
   }
 
-  public static long binaryExponentiation(long base, long exponent, long mod) {
+  private static long binaryExponentiation(long base, long exponent, long mod) {
     if (exponent == 0) {
       return 1L;
     }
