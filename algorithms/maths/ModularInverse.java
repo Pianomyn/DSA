@@ -17,7 +17,7 @@
  *    x^-1 = x^(m-2) % m
  * So mod inverse of x under m is x^(m-2) % m
  *
- * Fermat's Little Theorem is a generalisation of Euler's Theorem.
+ * Fermat's Little Theorem is a special case of Euler's Theorem.
  * Totient Function from Euler's Theorem is based on Lagrange's Theorem
  * CP handbook p.201-203
  */
