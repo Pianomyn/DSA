@@ -158,7 +158,6 @@ class SegmentTreeTest {
     FakeSegmentTree fst = new FakeSegmentTree(arr);
 
     assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
-    assert st.rangeMinimum(1, 1, 3) == fst.rangeMinimum(1, 0, 5);
 
     st.rangeUpdate(1, 0, 0, -22, UpdateType.MIN);
     fst.rangeUpdate(1, 0, 0, -22, UpdateType.MIN);
@@ -166,11 +165,11 @@ class SegmentTreeTest {
     assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
     assert st.rangeMinimum(1, 1, 5) == fst.rangeMinimum(1, 1, 5);
 
-    st.rangeUpdate(1, 5, 5, -22, UpdateType.MIN);
-    fst.rangeUpdate(1, 5, 5, -22, UpdateType.MIN);
+    st.rangeUpdate(1, 5, 5, -100, UpdateType.MIN);
+    fst.rangeUpdate(1, 5, 5, -100, UpdateType.MIN);
 
     assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
-    assert st.rangeMinimum(1, 0, 4) == fst.rangeMinimum(1, 0, 5);
-    assert st.rangeMinimum(1, 1, 3) == fst.rangeMinimum(1, 0, 5);
+    assert st.rangeMinimum(1, 0, 4) == fst.rangeMinimum(1, 0, 4);
+    assert st.rangeMinimum(1, 1, 3) == fst.rangeMinimum(1, 1, 3);
   }
 }
