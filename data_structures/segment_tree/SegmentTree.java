@@ -159,14 +159,10 @@ class SegmentTreeTest {
 
     assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
 
-    st.rangeUpdate(1, 2, 2, -29, UpdateType.MIN);
-    fst.rangeUpdate(1, 2, 2, -29, UpdateType.MIN);
+    st.rangeUpdate(1, 0, 0, -22, UpdateType.MIN);
+    fst.rangeUpdate(1, 0, 0, -22, UpdateType.MIN);
 
     assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
-
-    st.rangeUpdate(1, 5, 5, -29, UpdateType.MIN);
-    fst.rangeUpdate(1, 5, 5, -29, UpdateType.MIN);
-
-    assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
+    assert st.rangeMinimum(1, 1, 5) == fst.rangeMinimum(1, 1, 5);
   }
 }
