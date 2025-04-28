@@ -7,7 +7,7 @@ class BinaryIndexTree {
   public BinaryIndexTree(int[] arr) {
     this.arr = arr;
     this.size = arr.length;
-    this.tree = new int[this.size + 1]; // To fit bit rules and also to avoid out of bounds
+    this.tree = new int[this.size + 1]; // To avoid out of bounds
     this.build();
   }
 
@@ -27,8 +27,11 @@ class BinaryIndexTree {
     }
   }
 
+  // [l, r]
+  public int rangeQuery(int l, int r) { return sum(r) - sum(l - 1); }
+
   // [1, i]
-  public int sum(int i) {
+  private int sum(int i) {
     int sum = 0;
     while (i > 0) {
       sum += this.tree[i];
@@ -37,9 +40,6 @@ class BinaryIndexTree {
     }
     return sum;
   }
-
-  // [l, r]
-  public int rangeQuery(int l, int r) { return sum(r) - sum(l - 1); }
 
   private int getLeastSignificantBit(int i) {
     return i & -i; // -i is represented with all bits flipped + 1.
