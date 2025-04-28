@@ -13,11 +13,11 @@ class BinaryIndexTree {
 
   public void build() {
     for (int i = 0; i < arr.length; i++) {
-      update(i + 1, arr[i]);
+      pointUpdate(i + 1, arr[i]);
     }
   }
 
-  public void update(int i, int value) {
+  public void pointUpdate(int i, int value) {
     int delta = value - this.arr[i];
     this.arr[i] = value;
     while (i <= this.size) {
