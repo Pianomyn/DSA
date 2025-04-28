@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=Tr-xEGoByFQ&list=PL1gVuOYe08PT54itbrJmJbmLrk1W1DXxu&index=5
 
 interface RangeQuery {
-  int minimum(int i, int start, int end);
+  int rangeMinimum(int i, int start, int end);
 }
 interface RangeUpdate {
   void rangeUpdate(int i, int start, int end, int change,
@@ -17,7 +17,7 @@ class FakeSegmentTree implements RangeQuery, RangeUpdate {
   public FakeSegmentTree(int[] arr) { this.arr = arr; }
 
   @Override
-  public int minimum(int i, int start, int end) {
+  public int rangeMinimum(int i, int start, int end) {
     int min = Integer.MAX_VALUE;
     for (; start <= end; start++) {
       min = Math.min(min, this.arr[start]);
@@ -123,7 +123,7 @@ public class SegmentTree implements RangeQuery, RangeUpdate {
   }
 
   @Override
-  public int minimum(int i, int start, int end) {
+  public int rangeMinimum(int i, int start, int end) {
     // Uncovered
     if (end < this.rangeLow[i] || this.rangeHigh[i] < start) {
       return Integer.MAX_VALUE;
@@ -136,8 +136,8 @@ public class SegmentTree implements RangeQuery, RangeUpdate {
 
     // Partially covered
     propagate(i);
-    int minLeft = minimum(2 * i, start, end);
-    int minRight = minimum(2 * i + 1, start, end);
+    int minLeft = rangeMinimum(2 * i, start, end);
+    int minRight = rangeMinimum(2 * i + 1, start, end);
 
     updateMin(i);
 
@@ -157,16 +157,16 @@ class SegmentTreeTest {
     SegmentTree st = new SegmentTree(arr);
     FakeSegmentTree fst = new FakeSegmentTree(arr);
 
-    assert st.minimum(1, 0, 5) == fst.minimum(1, 0, 5);
+    assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
 
     st.rangeUpdate(1, 2, 2, -29, UpdateType.MIN);
     fst.rangeUpdate(1, 2, 2, -29, UpdateType.MIN);
 
-    assert st.minimum(1, 0, 5) == fst.minimum(1, 0, 5);
+    assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
 
     st.rangeUpdate(1, 5, 5, -29, UpdateType.MIN);
     fst.rangeUpdate(1, 5, 5, -29, UpdateType.MIN);
 
-    assert st.minimum(1, 0, 5) == fst.minimum(1, 0, 5);
+    assert st.rangeMinimum(1, 0, 5) == fst.rangeMinimum(1, 0, 5);
   }
 }
