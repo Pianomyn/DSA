@@ -36,12 +36,12 @@ class FakeSegmentTree implements RangeQuery, RangeUpdate {
 
 public class SegmentTree implements RangeQuery, RangeUpdate {
   int n;
-  int[] rangeLow, // For a point, the low end of the range it's responsible for.
-      rangeHigh, // For a point, the high end of the range it's responsible for.
-      min,       //
-      max,       //
-      sum,       //
-      delta;     //  For lazy propagation
+  int[] rangeLow,
+      rangeHigh,
+      min,
+      max,
+      sum,
+      delta;  //  For lazy propagation
 
   /* If n is a power of 2, only need 2n - 1 nodes (n leaves, n-1 internal).
    * For safety, pad to the next power of 2 to accommodate all nodes if not
